@@ -1,0 +1,18 @@
+package com.dxc.service;
+
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+
+import com.dxc.model.User;
+
+public interface UserService extends UserDetailsService{
+
+UserDetails loadUserByUsername(String username) throws UsernameNotFoundException;
+User findByEmail(String email);
+void createPasswordResetTokenForUser(User user, String token);
+
+User getUserByPasswordResetToken(String token);
+
+void changeUserPassword(User user, String newPassword);
+}

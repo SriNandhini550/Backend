@@ -1,0 +1,45 @@
+package com.dxc.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
+
+import com.dxc.model.User;
+import com.dxc.repository.UserRepository;
+
+import lombok.RequiredArgsConstructor;
+
+@Service
+@RequiredArgsConstructor
+public class UserServiceImpl implements UserService, UserDetailsService {
+
+	@Autowired
+	private UserRepository userRepository;
+	
+
+	  @Override
+	    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+	        User user = userRepository.findByUseremail(username)
+	                .orElseThrow(() -> new UsernameNotFoundException("User not found with email: " + username));
+
+	        return org.springframework.security.core.userdetails.User
+	                .withUsername(user.getUseremail())
+	                .password(user.getUserpassword())
+	                .roles(user.getRole().name())
+	                .accountExpired(false)
+	                .accountLocked(false)
+	                .credentialsExpired(false)
+	                .disabled(false)
+	                .build();
+	    }
+
+
+			
+		}
+	
+
+
+
+

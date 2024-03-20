@@ -1,0 +1,5 @@
+package com.dxc.service;
+
+public interface RefreshTokenService {
+    boolean isValidRefreshToken(String refreshToken);
+}

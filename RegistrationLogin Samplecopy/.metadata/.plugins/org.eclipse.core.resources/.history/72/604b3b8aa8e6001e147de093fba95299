@@ -1,0 +1,5 @@
+package com.dxc.repository;
+
+public class PasswordResetTokenRepository {
+
+}

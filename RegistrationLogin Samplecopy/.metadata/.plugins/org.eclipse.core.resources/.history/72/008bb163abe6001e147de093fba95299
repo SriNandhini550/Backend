@@ -1,0 +1,5 @@
+package com.dxc.config;
+
+public class EmailConfig {
+
+}

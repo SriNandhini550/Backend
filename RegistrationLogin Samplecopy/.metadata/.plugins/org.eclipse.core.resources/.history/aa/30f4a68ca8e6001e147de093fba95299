@@ -1,0 +1,10 @@
+package com.dxc.repository;
+
+import org.springframework.stereotype.Repository;
+
+import com.dxc.model.PasswordResetToken;
+
+@Repository
+public interface PasswordResetTokenRepository extends JpaRepository<PasswordResetToken, Long> {
+    PasswordResetToken findByToken(String token);
+}

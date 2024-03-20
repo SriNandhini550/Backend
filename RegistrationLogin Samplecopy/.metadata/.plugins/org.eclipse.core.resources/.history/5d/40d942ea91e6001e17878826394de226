@@ -1,0 +1,5 @@
+package com.dxc.security.jwt;
+
+public class CustomUserDetails {
+
+}
